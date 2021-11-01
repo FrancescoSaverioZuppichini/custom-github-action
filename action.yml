@@ -12,13 +12,15 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python 3.9
       id: setup
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
-        
+    - name: Checking for dead linkgs
+      id: check
       run: python ${{ github.action_path }}/main.py
+      shell: bash
     #   shell: bash
     # - id: random-number-generator
     #   run: echo "::set-output name=random-id::$(echo $RANDOM)"
