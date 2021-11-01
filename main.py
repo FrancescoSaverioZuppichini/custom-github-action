@@ -3,7 +3,8 @@ import requests  # noqa We are just importing this to prove the dependency insta
 
 
 def main():
-    my_input = os.environ["MY-INPUT"]
+    print(os.environ)
+    my_input = os.environ["INPUT_MY-INPUT"]
 
     my_output = f"Hello {my_input}"
 
