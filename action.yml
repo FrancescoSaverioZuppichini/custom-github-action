@@ -12,9 +12,10 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Checking for dead linkgs
+    - run: pip install -r ${{ github.action_path }}/requirements.txt
+      shell: bash
       id: check
-      run: python ${{ github.action_path }}/main.py
+    - run: python ${{ github.action_path }}/main.py
       shell: bash
     #   shell: bash
     # - id: random-number-generator
