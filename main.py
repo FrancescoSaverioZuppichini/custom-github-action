@@ -3,11 +3,11 @@ import requests  # noqa We are just importing this to prove the dependency insta
 
 
 def main():
-    my_input = os.environ["INPUT_MYINPUT"]
+    my_input = os.environ["MY-INPUT"]
 
     my_output = f"Hello {my_input}"
 
-    print(f"::set-output name=myOutput::{my_output}")
+    print(f"::set-output name=my-output::{my_output}")
 
 
 if __name__ == "__main__":

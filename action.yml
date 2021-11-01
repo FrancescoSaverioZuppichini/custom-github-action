@@ -1,21 +1,27 @@
 name: 'Hello World'
 description: 'Greet someone'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  my-input:  # id of input
+    description: 'An input'
     required: true
-    default: 'World'
+    default: 'foo'
 outputs:
-  random-number:
-    description: "Random number"
+  my-output:
+    description: "An output"
     value: ${{ steps.random-number-generator.outputs.random-id }}
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
+    - name: Set up Python ${{ matrix.python-version }}
+      id: setup
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+        
+      run: python ${{ github.action_path }}/main.py
+    #   shell: bash
+    # - id: random-number-generator
+    #   run: echo "::set-output name=random-id::$(echo $RANDOM)"
+    #   shell: bash
     # - run: ${{ github.action_path }}/goodbye.sh
     #   shell: bash
